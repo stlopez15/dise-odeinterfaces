@@ -29,3 +29,12 @@ urlpatterns = [
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+else:
+    # En tu caso, como es proyecto escolar y está en Render con DEBUG=True,
+    # puedes dejarlo siempre, pero esta versión es más "limpia":
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
