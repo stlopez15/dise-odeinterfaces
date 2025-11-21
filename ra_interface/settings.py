@@ -77,11 +77,16 @@ WSGI_APPLICATION = 'ra_interface.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "ddi_postgres",
+        "USER": "ddi_postgres_user",
+        "PASSWORD": "Mj0bez5IaFWD0AmECj7msSqYMhJrHWe4",
+        "HOST": "dpg-d4gb09efu37c73choqrg-a.oregon-postgres.render.com",
+        "PORT": "5432",
     }
 }
+
 
 
 # Password validation
