@@ -14,27 +14,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from visors_app import views
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from visors_app.views import subir
+
+from visors_app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('visors_app.urls')),
-    path('subir/', views.subir, name='subir'),
+    path("admin/", admin.site.urls),
+    path("subir/", views.subir_interface, name="subir_interface"),
+    path("lista/", views.lista_interfaces, name="lista_interfaces"),
+    path("ver/<int:id>/", views.ver_ra, name="ver_ra"),
+]
 
-    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# 👉 Servir MEDIA
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-else:
-    # En tu caso, como es proyecto escolar y está en Render con DEBUG=True,
-    # puedes dejarlo siempre, pero esta versión es más "limpia":
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# 👉 Servir STATIC (muy importante para /static/patterns/hiro.patt)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
