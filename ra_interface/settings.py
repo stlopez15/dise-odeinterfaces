@@ -125,9 +125,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+# STATICFILES_DIRS la quitamos porque tus estáticos están en las apps
+# y Django ya los recoge de "visors_app/static" automáticamente
+
 
 
 # Default primary key field type
